@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+class A1_2 {
+    public static void main(String args[])
+    {
+        System.out.println("Enter the value to calculate: ");
+        Scanner obc= new Scanner(System.in);
+        long int2 = obc.nextLong();
+
+        System.out.print("X" + " ");
+        for(int i=0;i<int2;i++)
+            System.out.print(i + " ");
+
+        System.out.println();
+
+        for(int i=0;i<int2;i++)
+        {
+            System.out.print(i + " ");
+            for(int j=0;j<int2;j++)
+                System.out.print(((i * j) % int2) + " ");
+            System.out.println();
+        }
+
+    }
+}
