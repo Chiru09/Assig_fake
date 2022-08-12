@@ -1,0 +1,124 @@
+import java.util.*;
+
+class MyByte{
+
+    byte b;
+
+    MyByte(){
+        b=0;
+    }
+
+    MyByte(byte bb){
+        b=bb;
+    }
+
+    void setByte(byte bb){
+        b=bb;
+    }
+
+    void andOP(MyByte b2){
+        b=(byte)(b&b2.b);
+    }
+
+    void orOP(MyByte b2){
+        b=(byte)(b|b2.b);
+    }
+
+    void xorOP(MyByte b2){
+        b=(byte)(b^b2.b);
+    }
+
+    // void mask(){
+
+    // }
+
+    void complement(){
+        b=(byte)(~b);
+    }
+
+    void display(){
+        System.out.println("Value of MyByte data: "+b);
+    }
+
+}
+
+class A3_3
+{
+    public static void main(String[] args) {
+
+        MyByte b=new MyByte();
+        Scanner sc=new Scanner(System.in);
+
+        int x=1;
+        while(x>0){
+            System.out.println("Menu");
+            System.out.println("1. Set byte value");
+            System.out.println("2. Perform and operation");
+            System.out.println("3. Perform or operation");
+            System.out.println("4. Perform xor operation");
+            System.out.println("5. Make mask");
+            System.out.println("6. Complement");
+            System.out.println("7. Exit");
+            System.out.println("Enter choice: ");
+
+            int choice=sc.nextByte();
+
+            switch(choice){
+
+                case 1: {
+                    System.out.println("Enter data: ");
+                    byte ib=sc.nextByte();
+                    b.setByte(ib);
+                    break;
+                }
+                case 2:{
+                    System.out.println("Enter 2nd data: ");
+                    byte ib=sc.nextByte();
+
+                    MyByte b2=new MyByte(ib);
+                    b.andOP(b2);
+                    b.display();
+
+                    break;
+                }
+                case 3:{
+                    System.out.println("Enter 2nd data: ");
+                    byte ib=sc.nextByte();
+
+                    MyByte b2=new MyByte(ib);
+                    b.orOP(b2);
+                    b.display();
+
+                    break;
+                }
+                case 4:{
+                    System.out.println("Enter 2nd data: ");
+                    byte ib=sc.nextByte();
+
+                    MyByte b2=new MyByte(ib);
+                    b.xorOP(b2);
+                    b.display();
+
+                    break;
+                }
+                case 5:{
+
+                    break;
+                }
+                case 6:{
+                    System.out.println("Enter data: ");
+                    byte ib=sc.nextByte();
+
+                    b.complement();
+
+                    break;
+                }
+                case 7:{
+                    x=0;
+                }
+                default : System.out.println("Invalid input");
+            }
+        }
+
+    }
+}
