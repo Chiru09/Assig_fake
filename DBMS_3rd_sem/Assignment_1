@@ -1,0 +1,90 @@
+-- A) create table
+
+-- creating the table named Customer 
+CREATE TABLE Customer (
+  cust_id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL
+
+);
+
+
+-- creating the table named Item
+CREATE TABLE Item (
+  Item_Id INTEGER PRIMARY KEY,
+  item_name TEXT NOT NULL,
+  price INTEGER
+);
+
+
+-- creating the table named Sale
+CREATE TABLE Sale (
+  bill_no INTEGER PRIMARY KEY,
+  bill_date DATE,
+  cust_id INTEGER,
+  item_id INTEGER,
+  qty_sold INTEGER
+);
+
+-- B) show table description
+
+DESCRIBE Customer;
+DESCRIBE Item;
+DESCRIBE Sale;
+
+-- C) insert 10 records in each table
+
+-- insert in table Customer
+INSERT INTO Customer VALUES (0001, 'Clark');
+INSERT INTO Customer VALUES (0002, 'Dave');
+INSERT INTO Customer VALUES (0003, 'Ava');
+INSERT INTO Customer VALUES (0004, 'susi');
+INSERT INTO Customer VALUES (0005, 'pankaj');
+INSERT INTO Customer VALUES (0007, 'jyoti');
+INSERT INTO Customer VALUES (0008, 'jay');
+INSERT INTO Customer VALUES (0009, 'simp_shyam');
+INSERT INTO Customer VALUES (0010, 'anubhaw');
+INSERT INTO Customer VALUES (0006, 'deepak');
+
+-- insert in table Item
+INSERT INTO Item VALUES (0011, 'Clark1',44);
+INSERT INTO Item VALUES (0002, 'Dave2',447);
+INSERT INTO Item VALUES (0013, 'Ava3',46);
+INSERT INTO Item VALUES (0081, 'susi4',444);
+INSERT INTO Item VALUES (0092, 'pankaj5',445);
+INSERT INTO Item VALUES (0093, 'jyoti6',447);
+INSERT INTO Item VALUES (0021, 'jay7',44);
+INSERT INTO Item VALUES (0042, 'simp_shyam8',449);
+INSERT INTO Item VALUES (0063, 'anubhaw9',443);
+INSERT INTO Item VALUES (0043, 'deepak0',448);
+
+-- insert in table Sale
+INSERT INTO Sale VALUES (111,'2022-08-05',441,001,20);
+INSERT INTO Sale VALUES (112,'2022-09-06',442,002,21);
+INSERT INTO Sale VALUES (113,'2022-08-05',443,003,22);
+INSERT INTO Sale VALUES (114,'2022-01-06',444,004,23);
+INSERT INTO Sale VALUES (115,'2022-07-06',445,005,24);
+INSERT INTO Sale VALUES (116,'2022-06-06',446,006,25);
+INSERT INTO Sale VALUES (117,'2022-03-06',447,007,26);
+INSERT INTO Sale VALUES (118,'2022-09-06',448,008,27);
+INSERT INTO Sale VALUES (119,'2022-10-06',449,009,28);
+INSERT INTO Sale VALUES (120,'2022-05-06',450,010,29);
+
+-- 1) Records
+-- fetch
+select * from Customer;
+select * from Item;
+select * from Sale;
+
+-- 2)
+select * from Item where price > 25;
+
+-- 3)
+select bill_no,cust_id from Sale where bill_date = curdate();
+
+-- 4)
+select name from Customer where cust_id = 0008;
+
+-- 5)
+delete from Customer where cust_id = 0010;
+
+select * from Customer;
