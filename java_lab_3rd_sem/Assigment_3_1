@@ -1,0 +1,178 @@
+import java.util.Scanner;
+import java.lang.*;
+
+class Time
+{
+    int hour;
+    int min;
+    int sec;
+
+    Time()
+    {
+        hour = 0;
+        min = 0;
+        sec = 0;
+    }
+
+    Time(int h,int m,int s)
+    {
+        hour = h;
+        min = m;
+        sec = s;
+    }
+
+    void displayTime()
+    {
+        System.out.println("time is: " + hour + ":" + min + ":" + sec);
+    }
+
+    void setTime (byte h,byte m,byte s)
+    {
+        hour = h;
+        min = m;
+        sec = s;
+    }
+
+    void addTime(Time t1,Time t2)
+    {
+        sec += t1.sec + t2.sec;
+        if(sec>59)
+        {
+            sec-=60;
+            min++;
+        }
+
+        min += t1.min + t2.min;
+        if(min>59)
+        {
+            min-=60;
+            hour++;
+        }
+
+        hour += t1.hour + t2.hour;
+        if(hour>23)
+            hour-=24;
+    }
+
+    void subtractTime(Time t1,Time t2)
+    {
+        int s1 = t1.sec + t1.min*60 + t1.hour*60*60;
+        int s2 = t2.sec + t2.min*60 + t2.hour*60*60;
+        int s3 = Math.abs(s1-s2);
+
+        hour = s3/3600;
+
+        s3-= hour*3600;
+
+        min = s3/60;
+
+        s3-= min*60;
+
+        sec = s3;
+    }
+
+    void toSeconds()
+    {
+        sec+= hour*3600 + min*60;
+        System.out.println("Converted time to secs: " + sec);
+    }
+
+    void toHour()
+    {
+        min = 0;
+        sec = 0;
+        System.out.println("hour is : " + hour);
+    }
+}
+
+class A3_1 {
+    public static void main(String args[])
+    {
+
+        Scanner obc = new Scanner(System.in);
+        int x=1;
+        while(x>0) {
+            System.out.println("1. Enter the time to display. \n 2.Set the time. \n 3. Enter two time to add them. ");
+            System.out.println(" 4. Enter the two time to substract them \n 5. Enter the time to convert it into seconds \n 6. Enter the time to convert it in hours");
+            System.out.println("7. Exit");
+            int choice = obc.nextInt();
+
+            switch (choice) {
+                case 1: {
+                    Time t1 = new Time();
+                    takeInput(t1);
+                    t1.displayTime();
+                    break;
+                }
+                case 2: {
+                    Time t2 = new Time();
+                    byte hh = obc.nextByte();
+                    byte mm = obc.nextByte();
+                    byte ss = obc.nextByte();
+                    t2.setTime(hh, mm, ss);
+                    t2.displayTime();
+                    break;
+
+                }
+                case 3: {
+                    Time t3 = new Time();
+                    takeInput(t3);
+                    Time t4 = new Time();
+                    takeInput(t4);
+                    Time t2 = new Time();
+                    t2.addTime(t3, t4);
+                    t2.displayTime();
+                    break;
+
+                }
+                case 4: {
+                    Time t3 = new Time();
+                    takeInput(t3);
+                    Time t4 = new Time();
+                    takeInput(t4);
+                    Time t2 = new Time();
+                    t2.subtractTime(t3, t4);
+                    t2.displayTime();
+                    break;
+
+                }
+                case 5: {
+                    Time t3 = new Time();
+                    takeInput(t3);
+                    t3.toSeconds();
+                    t3.displayTime();
+
+                    break;
+
+                }
+                case 6: {
+                    Time t3 = new Time();
+                    takeInput(t3);
+                    t3.toHour();
+                    t3.displayTime();
+
+                    break;
+
+                }
+                case 7: {
+                    x=0;
+                    break;
+
+                }
+                default:
+                    System.out.println("Enter the right input");
+
+            }
+        }
+    }
+
+    static void takeInput(Time t1)
+    {
+        Scanner obc = new Scanner(System.in);
+        System.out.println("Enter the hour, min and sec: ");
+        byte hh = obc.nextByte();
+        byte mm = obc.nextByte();
+        byte ss = obc.nextByte();
+        t1.setTime(hh,mm,ss);
+    }
+}
