@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+class A1_3 {
+    public static void main(String[] args) {
+
+
+        System.out.println("1. Enter the feet to convert it in meters : ");
+        System.out.println("2. Enter the minutes to convert it in years and days : ");
+        System.out.println("3. Enter the horse_power to convert it in joules : ");
+
+        System.out.println("Enter your choice : ");
+        Scanner obc= new Scanner(System.in);
+        int int3 = obc.nextInt();
+
+        switch(int3)
+        {
+            case 1:
+                System.out.println("Enter the value in feet: ");
+                double feet = obc.nextDouble();
+                System.out.println("feet in meter : " + feet/3.281);
+                break;
+
+            case 2:
+                System.out.println("Enter the value in Minute: ");
+                long mi = obc.nextLong();
+                System.out.println("Years : " + mi/(365*24*60) + " Days : " + (mi%(365*24*60))/(24*60));
+                break;
+
+            case 3:
+                System.out.println("Enter the value in Horse_power : ");
+                double HP = obc.nextDouble();
+                System.out.println("Horse_power in Joules : " + HP*745.699);
+                break;
+
+            default:
+                System.out.println("Enter the right input");
+        }
+    }
+
+}
