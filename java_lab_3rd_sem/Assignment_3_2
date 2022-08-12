@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+class Battery {
+    private float batt;
+
+    public Battery() {
+        System.out.println("This is a Default constructor");
+        batt = 100f;
+    }
+
+    public void showLevel() {
+        System.out.println("Battery level is: " + batt);
+    }
+
+    public void sendMsg() {
+        batt -= 2;
+    }
+
+    public void recvMsg() {
+        batt -= 1;
+    }
+
+    public void compute() {
+        batt -= (1.5);
+    }
+
+    public void recharge(float min) {
+        float m = min / 2;
+        batt += m;
+    }
+}
+
+class A3_2 {
+    public static void main(String[] args) {
+        Battery obj = new Battery();
+        int t = 10;
+        while (t > 0) {
+            System.out.print("1. Show battery level\n2. Send message\n3. Receive Message.");
+            System.out.print("\n4. Compute.\n5. Recharge\n6. Exit\n");
+            Scanner input = new Scanner(System.in);
+            System.out.print("Enter your choice: ");
+            int c = input.nextInt();
+            switch (c) {
+                case 1:
+                    obj.showLevel();
+                    break;
+                case 2:
+                    obj.sendMsg();
+                    break;
+                case 3:
+                    obj.recvMsg();
+                    break;
+                case 4:
+                    obj.compute();
+                    break;
+                case 5:
+                    System.out.print("Enter the amount of minute you plug the device: ");
+                    int min = input.nextInt();
+                    obj.recharge(c);
+                    break;
+                case 6:
+                    System.exit(0);
+                    break;
+            }
+        }
+    }
+}
