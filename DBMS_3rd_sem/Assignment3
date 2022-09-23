@@ -1,0 +1,80 @@
+
+-- create
+CREATE TABLE EMPLOYEE (
+  
+  Fname TEXT NOT NULL,
+  MNIT TEXT NOT NULL,
+  Lname TEXT NOT NULL,
+  SSN INTEGER PRIMARY KEY,
+  Bdate DATE NOT  NULL,
+  ADDRESS TEXT NOT NULL,
+  SEX TEXT NOT NULL,
+  SALARY INTEGER,
+  SUPERSSN INTEGER,
+  DNO INTEGER
+  
+);
+
+-- insert
+INSERT INTO EMPLOYEE VALUES ('Chiiv','B','Baral',123456780,'2022-09-23','jdpur01','M',30000,333355544,5);
+INSERT INTO EMPLOYEE VALUES ('abeka','T','chamar',123456781,'2022-09-24','japur02','M',40000,333355545,4);
+INSERT INTO EMPLOYEE VALUES ('Assh','J','Singh',123456783,'2022-09-25','jamur03','M',35000,333355546,1);
+INSERT INTO EMPLOYEE VALUES ('Ashi','S','Kamal',123456784,'2022-09-26','jahur04','F',33000,333355547,4);
+INSERT INTO EMPLOYEE VALUES ('Komal','K','Khan',123456785,'2022-09-27','jamshr05','F',32000,333355548,1);
+INSERT INTO EMPLOYEE VALUES ('Viajy','A','Pandit',123456786,'2022-09-28','jpur06','M',33300,333355549,1);
+INSERT INTO EMPLOYEE VALUES ('Basil','V','Herom',123456787,'2022-09-29','jamr07','M',50000,333355544,5);
+INSERT INTO EMPLOYEE VALUES ('Vijaya','E','Nagam',123456788,'2022-09-30','jdpur09','F',53000,null,1);
+
+
+
+-- fetch 
+SELECT * FROM EMPLOYEE;
+
+
+-- A)
+SELECT Fname from EMPLOYEE where Fname like '%a';
+SELECT Fname from EMPLOYEE where Fname like 'a%';
+SELECT Fname from EMPLOYEE where Fname like '%a%';
+
+
+-- B)
+SELECT * FROM EMPLOYEE order by Fname desc;
+
+
+-- C)
+-- i)
+SELECT max(SALARY) FROM EMPLOYEE;
+
+-- ii)
+SELECT min(SALARY) FROM EMPLOYEE;
+
+-- iii)
+SELECT avg(SALARY) FROM EMPLOYEE;
+
+-- iv)
+SELECT sum(SALARY) FROM EMPLOYEE;
+
+
+-- D)
+SELECT DNO, max(SALARY) FROM EMPLOYEE group by DNO;
+
+
+-- E)
+SELECT DNO,count(*) FROM EMPLOYEE group by DNO;
+
+
+-- F)
+select count(*) FROM
+(
+  select DNO, count(*) as ct FROM EMPLOYEE group by DNO
+) as t where ct>1;
+
+
+-- G)
+alter TABLE EMPLOYEE drop column SUPERSSN;
+select * FROM EMPLOYEE;
+
+
+
+
+ 
